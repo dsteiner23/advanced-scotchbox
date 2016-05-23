@@ -15,6 +15,7 @@ Vagrant.configure("2") do |config|
     config.vm.hostname = PROJECTNAME + ".dev"
     config.vm.synced_folder ".", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
 
+    config.vm.provision "shell", path: "provisioning/update.sh"
     config.vm.provision "shell", path: "provisioning/mysql.sh"
     config.vm.provision "shell", path: "provisioning/log.io/log-io.sh"
     config.vm.provision "shell", path: "provisioning/xdebug/xdebug.sh"
